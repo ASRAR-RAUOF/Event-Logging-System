@@ -1,0 +1,83 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="dashboard-header">
+        <h1>Event Logging System</h1>
+        <div class="system-status">
+            <span class="status-indicator"></span>
+            System Status: Active
+        </div>
+    </div>
+
+    <div class="card filters-card">
+        <div class="card-header">
+            <h3>Filters</h3>
+            <button class="btn-reset" onclick="resetFilters()">Reset Filters</button>
+        </div>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label for="eventType">Event Type</label>
+                <!-- <select id="eventType" class="form-select">
+                    <option value="">All Event Types</option>
+                    <% eventTypes.forEach(type => { %>
+                        <option value="<%= type %>"><%= type.replace('_', ' ') %></option>
+                    <% }); %>
+                </select>
+            </div> -->
+
+            <div class="filter-group">
+                <label for="sourceApp">Source Application</label>
+                <select id="sourceApp" class="form-select">
+                    <option value="">All Applications</option>
+                    <% sourceApps.forEach(app => { %>
+                        <option value="<%= app %>"><%= app %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" class="form-input">
+            </div>
+
+            <div class="filter-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" class="form-input">
+            </div>
+            
+            <button class="btn-primary" onclick="fetchEvents(1)">
+                <i class="fas fa-filter"></i> Apply Filters
+            </button>
+        </div>
+    </div>
+
+    <div class="card table-card">
+        <div class="table-responsive">
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Event Type</th>
+                        <th>Source App</th>
+                        <th>Data Payload</th>
+                        <th>Hash</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="eventsTable"></tbody>
+            </table>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <div class="verification-section">
+        <div class="verify-chain">
+            <button class="btn-verify" onclick="verifyChain()">
+                <i class="fas fa-shield-alt"></i> Verify Chain Integrity
+            </button>
+            <span id="verifyResult"></span>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

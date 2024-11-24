@@ -103,9 +103,9 @@
     "ws": "^8.18.0"
   },
   "scripts": {
-  "start": "node app.js",
-  "generate": "node eventGenerator.js"
-},
+    "start": "node app.js",
+    "generate": "node eventGenerator.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
