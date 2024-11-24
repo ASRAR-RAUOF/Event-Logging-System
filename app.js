@@ -7,7 +7,8 @@ const path = require("path");
 const app = express();
 app.set('views', path.join(__dirname, '/backend/views'));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'backend/public')));
+
 // Connect to MongoDB
 connectDB();
 
@@ -15,8 +16,10 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+
 // Routes
 app.use('/api/events', eventRoutes);
+
 app.get('/',(req,res)=>
 {
     res.render('dashboard');

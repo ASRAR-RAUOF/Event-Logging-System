@@ -6,4 +6,4 @@ const generateHash = (data) => {
         .digest('hex');
 };
 
-module.exports = { generateHash };
+module.exports =  generateHash ;
